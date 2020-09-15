@@ -1,0 +1,67 @@
+$golbal__container__width: 60%;
+$header-color: white;
+$header-bgcolor: lightblue;
+
+
+.App-header {
+  background-color: $header-bgcolor;
+  .golbal__container {
+    width: $golbal__container__width;
+    margin: 0 auto;
+  }
+  .App-header-in {
+    display: flex;
+    justify-content: space-between;
+
+    .header-brand {
+      padding: 15px 0;
+      span {
+        color: $header-color;
+        font-size: 2rem;
+      }
+    }
+
+    .header-links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+
+      a {
+        position: relative;
+        display: inline-block;
+        height: 100%;
+        text-align: center;
+        text-decoration: none;
+        color: $header-color;
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        margin: 0 15px;
+        &:last-child {
+          margin-right: 0;
+        }
+        &:first-child {
+          margin-left: 0;
+        }
+        &::after {
+          z-index: 1;
+          content: "";
+          height: 3px;
+          position: absolute;
+          background-color: $header-color;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          transform: scaleX(0);
+          transform-origin: center;
+          transition: all 0.5s ease;
+        }
+        &:hover::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}
