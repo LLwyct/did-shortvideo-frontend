@@ -1,14 +1,11 @@
-$golbal__container__width: 60%;
+@import url('./default.style.scss');
+
 $header-color: white;
 $header-bgcolor: lightblue;
 
 
 .App-header {
   background-color: $header-bgcolor;
-  .golbal__container {
-    width: $golbal__container__width;
-    margin: 0 auto;
-  }
   .App-header-in {
     display: flex;
     justify-content: space-between;
