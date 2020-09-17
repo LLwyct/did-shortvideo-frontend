@@ -1,0 +1,30 @@
+.feature-items-list {
+    list-style: none;
+    .feature-item {
+        display: block;
+        display: flex;
+        align-items: center;
+        margin: 60px 0;
+        img {
+            width: 80px;
+        }
+        div {
+            margin-left: 50px;
+            flex: 0 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            @media screen and (max-width: 749px){
+                margin-left: 25px;
+            }
+            h3 {
+                font-size: 1.15rem;
+                font-weight: 500;
+                margin-bottom: 1rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+    }
+}

@@ -1,9 +1,19 @@
 *, *::after, *::before {
   box-sizing: border-box;
 }
+html {
+  font-size: 16px;
+  @media (min-width: 10px) {
+    font-size: 14px;
+  }
 
-h1,h2,h3,h4,h5,h6,p {
+  @media (min-width: 550px) {
+    font-size: 16px;
+  }
+}
+h1,h2,h3,h4,h5,h6,p,ul {
   margin: 0;
+  padding: 0;
 }
 
 body {
@@ -19,4 +29,15 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+button {
+  cursor: pointer;
+}
+
+button, a {
+  transition: all 0.3s ease;
+  &:active {
+    opacity: 0.8;
+  }
 }

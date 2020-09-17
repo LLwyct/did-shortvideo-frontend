@@ -1,20 +1,22 @@
 @import url('./default.style.scss');
-
 $header-color: white;
-$header-bgcolor: lightblue;
-
 
 .App-header {
-  background-color: $header-bgcolor;
+  background:linear-gradient(#3298DC, #3d95e3);
+
   .App-header-in {
     display: flex;
     justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 15px 0;
 
     .header-brand {
-      padding: 15px 0;
       span {
         color: $header-color;
         font-size: 2rem;
+      }
+      @media (max-width: 550px) {
+        display: none;
       }
     }
 
@@ -60,5 +62,28 @@ $header-bgcolor: lightblue;
         }
       }
     }
+  }
+}
+
+.App-footer {
+  padding: 60px 0;
+  height: 380px;
+  background-color: #2B2B2B;
+  display: flex;
+  flex-wrap: wrap;
+  color: $header-color;
+  & > * {
+    text-align: center;
+    flex: 1;
+  }
+  .left {
+  }
+  .mid {
+    flex: 1;
+    
+  }
+  .right {
+    flex: 1;
+
   }
 }

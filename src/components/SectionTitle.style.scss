@@ -1,0 +1,29 @@
+.section-title {
+    position: relative;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: -1px;
+    word-spacing: 7px;
+    display: inline-block;
+    margin-bottom: 60px;
+    text-align: center;
+    &::after,
+    &::before {
+        position: absolute;
+        z-index: 1;
+        background-color: black;
+        content: "";
+        width: 80px;
+        height: 1px;
+        top: 50%;
+        @media screen and (max-width: 769px){
+            display: none;
+        }
+    }
+    &::before {
+        left: -120px;
+    }
+    &::after {
+        right: -120px;
+    }
+}

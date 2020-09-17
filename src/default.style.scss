@@ -1,5 +1,18 @@
-$global__container__width: 60%;
-.global__container {
-    width: $global__container__width;
+$golbal__container__width: 60%;
+
+
+.golbal__container {
     margin: 0 auto;
-  }
+    width: $golbal__container__width;
+    
+    @media screen and (max-width: 1025px) {
+        width: 60%;
+    }
+    @media screen and (max-width: 769px) {
+        width: 85%;
+    }
+    @media screen and (max-width: 481px) {
+        width: 95%;
+    }
+}
+
