@@ -46,8 +46,48 @@ const staticCardsData = [
 ]
 
 const Home:React.FunctionComponent = () => {
+    React.useEffect(() => {
+        const board: HTMLElement | null = document.querySelector(".App-board");
+        const sideNav: HTMLElement | null = document.querySelector(".side-nav");
+        if (board !== null && sideNav !== null) {
+            let observer: IntersectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting === false) {
+                        sideNav.classList.remove("sidenav-hidden");
+                        sideNav.classList.add("sidenav-show");
+                    }
+                    if (entry.isIntersecting === true) {
+                        sideNav.classList.remove("firstrun");
+                        sideNav.classList.remove("sidenav-show");
+                        sideNav.classList.add("sidenav-hidden")
+                    }
+                })
+            }, {
+                threshold: 0.35
+            })
+
+            observer.observe(board);
+        }
+
+    }, []);
+
+    
     return (
         <>
+            <div className="side-nav firstrun">
+                <div>             
+                    <p><a href="#1">What is DID</a></p>
+                </div>
+                <div>             
+                    <p><a href="#2">What can our platform provide you?</a></p>
+                </div>
+                <div>             
+                    <p><a href="#3">How about our production ?</a></p>
+                </div>
+                <div>             
+                    <p><a href="#4">Currently supported plantforms</a></p>
+                </div>
+            </div>
             <section className="App-board">
                 <div className="golbal__container">
                     <div className="App-board-in">
@@ -59,14 +99,15 @@ const Home:React.FunctionComponent = () => {
                     </div>
                 </div>
             </section>
-            <section>
+            <section id="1">
                 <div className="golbal__container">
                     <div className="what-is-did">
+                    
                     <SectionTitle name="What is DID ?"></SectionTitle>
                     </div>
                 </div>
             </section>
-            <section>
+            <section id="2">
                 <div className="golbal__container">
                     <div className="what-provide">
                         <SectionTitle name="What can our platform provide you?"></SectionTitle>
@@ -74,14 +115,14 @@ const Home:React.FunctionComponent = () => {
                     </div>
                 </div>
             </section>
-            <section>
+            <section id="3">
                 <div className="golbal__container">
                     <div className="video-demo">
                         <SectionTitle name="How about our production ?"></SectionTitle>
                     </div>
                 </div>
             </section>
-            <section>
+            <section id="4">
                 <div className="golbal__container">
                     <div className="support-plantforms">
                         <SectionTitle name="Currently supported plantforms"></SectionTitle>

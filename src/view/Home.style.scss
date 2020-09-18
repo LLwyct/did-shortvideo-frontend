@@ -48,13 +48,95 @@
 .what-is-did,
 .what-provide,
 .video-demo,
-.support-plantform {
+.support-plantforms {
     // text-align: center;
     padding: 100px 0 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+.side-nav {
+    position: fixed;
+    left: 50px;
+    top: 120px;
+    transition: all 0.5s ease;
+    opacity: 0;
+    @media screen and (max-width: 789px){
+        display: none;
+    }
+    &.firstrun {
+        display: none;
+    }
+    &.sidenav-show {
+        animation: showSidenav 1s forwards;
+    }
+    &.sidenav-hidden {
+        animation: hideSidenav 1s forwards;
+    }
+    @keyframes showSidenav {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes hideSidenav {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    &:hover div p {
+        opacity: 1;
+        transition: all 0.5s ease;
+        transform: translateX(0px);
+    }
+    div {
+        position: relative;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 50%;
+        background-color: black;
+        margin: 15px 0;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        p {
+            position: absolute;
+            opacity: 0;
+            transition: all 1s ease 0.5s;
+            display: inline-block;
+            width: auto;
+            left: 3rem;
+            transform: translateX(-200px);
+            
+            a {
+                white-space:nowrap;
+                font-size: 14px;
+                color: black;
+                word-spacing: -0.3px;
+                text-decoration: none;
+
+            }
+        }
+    }
+    &::after {
+        z-index: -1;
+        position: absolute;
+        display: block;
+        content: "";
+        height: 100%;
+        width: 1px;
+        background-color: black;
+        top: 0;
+        left: 50%;
+    }
+}
+
 
 .section-title {
     position: relative;
@@ -86,3 +168,4 @@
     justify-content: space-around;
     
 }
+

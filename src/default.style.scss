@@ -5,8 +5,11 @@ $golbal__container__width: 60%;
     margin: 0 auto;
     width: $golbal__container__width;
     
-    @media screen and (max-width: 1025px) {
+    @media screen and (max-width: 1900px) {
         width: 60%;
+    }
+    @media screen and (max-width: 1025px) {
+        width: 75%;
     }
     @media screen and (max-width: 769px) {
         width: 85%;
