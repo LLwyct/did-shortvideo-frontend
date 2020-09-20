@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.scss';
-
+import Dashboard from './view/Dashboard';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './view/Home';
 
 function App() {
+
   return (
+    <BrowserRouter>
     <div className="App">
       <header className="App-header">
         <div className="golbal__container">
@@ -13,8 +16,8 @@ function App() {
               <a href="/">
                 <span>home</span>
               </a>
-              <a href="/"><span>
-                </span>about</a>
+              <a href="/profile"><span>
+                </span>Profile</a>
             </div>
             <div className="header-brand">
               <span>DSV | TRUST CENTER</span>
@@ -22,7 +25,10 @@ function App() {
           </div>
         </div>
       </header>
-      <Home/>
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/profile" component={Dashboard}></Route>
+        </Switch>
       <footer className="App-footer">
         <div className="left">
           <h3>Contact Us</h3>
@@ -35,6 +41,7 @@ function App() {
         <div className="right"></div>
       </footer>
     </div>
+    </BrowserRouter >
   );
 }
 
