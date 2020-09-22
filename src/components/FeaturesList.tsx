@@ -15,17 +15,17 @@ type FeaturesList = Array<Feature>;
 const staticData: FeaturesList = [
     {
         img: tiktok,
-        title: 'DID Management',
+        title: 'DID Management1',
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestias reiciendis corporis est amet. Quasi nulla architecto temporibus iste praesentium numquam quibusdam ipsum nobis beatae, culpa aperiam perspiciatis explicabo, ad vitae. Ea voluptatibus nesciunt ex. Eos laudantium velit placeat ducimus. Ipsa dolorum iste itaque suscipit nesciunt impedit amet!'
     },
     {
         img: tiktok,
-        title: 'DID Management',
+        title: 'DID Management2',
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestias reiciendis corporis est amet. Quasi nulla architecto temporibus iste praesentium numquam quibusdam ipsum nobis beatae, culpa aperiam perspiciatis explicabo, ad vitae. Ea voluptatibus nesciunt ex. Eos laudantium velit placeat ducimus. Ipsa dolorum iste itaque suscipit nesciunt impedit amet!'
     },
     {
         img: tiktok,
-        title: 'DID Management',
+        title: 'DID Management3',
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestias reiciendis corporis est amet.'
     }
 ]

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Dashboard from './view/Dashboard';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Home from './view/Home';
 
 function App() {
@@ -13,11 +13,8 @@ function App() {
         <div className="golbal__container">
           <div className="App-header-in">
             <div className="header-links">
-              <a href="/">
-                <span>home</span>
-              </a>
-              <a href="/profile"><span>
-                </span>Profile</a>
+              <Link to="/">Home</Link>
+              <Link to="/profile">Profile</Link>
             </div>
             <div className="header-brand">
               <span>DSV | TRUST CENTER</span>
@@ -25,10 +22,10 @@ function App() {
           </div>
         </div>
       </header>
-        <Switch>
-          <Route exact path="/" component={Home}></Route>
-          <Route path="/profile" component={Dashboard}></Route>
-        </Switch>
+      <Switch>
+        <Route exact path="/" component={Home}></Route>
+        <Route path="/profile" component={Dashboard}></Route>
+      </Switch>
       <footer className="App-footer">
         <div className="left">
           <h3>Contact Us</h3>

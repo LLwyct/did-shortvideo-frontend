@@ -1,9 +1,16 @@
 @import url('./default.style.scss');
 $header-color: white;
 
+.App {
+  min-height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+}
+
 .App-header {
   background:linear-gradient(#3298DC, #3d95e3);
-
+  transition: all 1s ease;
   .App-header-in {
     display: flex;
     justify-content: space-between;
@@ -64,7 +71,10 @@ $header-color: white;
     }
   }
 }
-
+.header-dark {
+  color: white;
+  background: #89909f;
+}
 .App-footer {
   padding: 60px 0;
   height: 380px;

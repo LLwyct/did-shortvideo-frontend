@@ -47,6 +47,15 @@ const staticCardsData = [
 
 const Home:React.FunctionComponent = () => {
     React.useEffect(() => {
+        const body: HTMLElement | null = document.querySelector("body");
+        const header: HTMLElement | null = document.querySelector("header");
+
+        if (body && body.classList.contains("body-dark")) {
+            body.classList.remove("body-dark");
+        }
+        if (header && header.classList.contains("header-dark")) {
+            header.classList.remove("header-dark");
+        }
         const board: HTMLElement | null = document.querySelector(".App-board");
         const sideNav: HTMLElement | null = document.querySelector(".side-nav");
         if (board !== null && sideNav !== null) {
