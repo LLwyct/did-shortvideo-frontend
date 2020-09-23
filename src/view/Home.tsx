@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Home.style.scss';
-
+import {Link} from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle';
 import FeaturesList from '../components/FeaturesList';
 import Card from '../components/Card';
@@ -82,79 +82,113 @@ const Home:React.FunctionComponent = () => {
 
     
     return (
-        <>
-            <div className="side-nav firstrun">
-                <div>             
-                    <p><a href="#1">What is DID</a></p>
-                </div>
-                <div>             
-                    <p><a href="#2">What can our platform provide you?</a></p>
-                </div>
-                <div>             
-                    <p><a href="#3">How about our production ?</a></p>
-                </div>
-                <div>             
-                    <p><a href="#4">Currently supported plantforms</a></p>
-                </div>
+      <>
+        <header className="App-header">
+          <div className="golbal__container">
+            <div className="App-header-in">
+              <div className="header-links">
+                <Link to="/">Home</Link>
+                <Link to="/profile">Profile</Link>
+              </div>
+              <div className="header-brand">
+                <span>DSV | TRUST CENTER</span>
+              </div>
             </div>
-            <section className="App-board">
-                <div className="golbal__container">
-                    <div className="App-board-in">
-                        <h1>DID-Based Short Video Joint Control Platform</h1>
-                        <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat.</p>
-                        <button>
-                            <span>get started</span>
-                        </button>
-                    </div>
-                </div>
-            </section>
-            <section id="1">
-                <div className="golbal__container">
-                    <div className="what-is-did">
-                    
-                    <SectionTitle name="What is DID ?"></SectionTitle>
-                    </div>
-                </div>
-            </section>
-            <section id="2">
-                <div className="golbal__container">
-                    <div className="what-provide">
-                        <SectionTitle name="What can our platform provide you?"></SectionTitle>
-                        <FeaturesList></FeaturesList>
-                    </div>
-                </div>
-            </section>
-            <section id="3">
-                <div className="golbal__container">
-                    <div className="video-demo">
-                        <SectionTitle name="How about our production ?"></SectionTitle>
-                    </div>
-                </div>
-            </section>
-            <section id="4">
-                <div className="golbal__container">
-                    <div className="support-plantforms">
-                        <SectionTitle name="Currently supported plantforms"></SectionTitle>
-                        <div className="cards-list">
-                            {
-                                staticCardsData.map((v) => {
-                                    return (
-                                        <Card 
-                                            img={v.img}
-                                            title={v.title}
-                                            intro={v.intro}
-                                            key={v.title}
-                                        />
-                                    )
-                                })
-                            }
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-        </>
-    )
+          </div>
+        </header>
+        <div className="side-nav firstrun">
+          <div>
+            <p>
+              <a href="#1">What is DID</a>
+            </p>
+          </div>
+          <div>
+            <p>
+              <a href="#2">What can our platform provide you?</a>
+            </p>
+          </div>
+          <div>
+            <p>
+              <a href="#3">How about our production ?</a>
+            </p>
+          </div>
+          <div>
+            <p>
+              <a href="#4">Currently supported plantforms</a>
+            </p>
+          </div>
+        </div>
+        <section className="App-board">
+          <div className="golbal__container">
+            <div className="App-board-in">
+              <h1>DID-Based Short Video Joint Control Platform</h1>
+              <p>
+                Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do
+                Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut
+                Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris
+                Nisi Ut Aliquip Ex Ea Commodo Consequat.
+              </p>
+              <button>
+                <span>get started</span>
+              </button>
+            </div>
+          </div>
+        </section>
+        <section id="1">
+          <div className="golbal__container">
+            <div className="what-is-did">
+              <SectionTitle name="What is DID ?"></SectionTitle>
+            </div>
+          </div>
+        </section>
+        <section id="2">
+          <div className="golbal__container">
+            <div className="what-provide">
+              <SectionTitle name="What can our platform provide you?"></SectionTitle>
+              <FeaturesList></FeaturesList>
+            </div>
+          </div>
+        </section>
+        <section id="3">
+          <div className="golbal__container">
+            <div className="video-demo">
+              <SectionTitle name="How about our production ?"></SectionTitle>
+            </div>
+          </div>
+        </section>
+        <section id="4">
+          <div className="golbal__container">
+            <div className="support-plantforms">
+              <SectionTitle name="Currently supported plantforms"></SectionTitle>
+              <div className="cards-list">
+                {staticCardsData.map((v) => {
+                  return (
+                    <Card
+                      img={v.img}
+                      title={v.title}
+                      intro={v.intro}
+                      key={v.title}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer className="App-footer">
+          <div className="left">
+            <h3>Contact Us</h3>
+          </div>
+          <div className="mid">
+            Privacy Policy
+            <br />
+            Terms and Conditions
+            <br /> 2020 © Name
+          </div>
+          <div className="right"></div>
+        </footer>
+      </>
+    );
 }
 
 export default Home;
