@@ -5,6 +5,7 @@ import FeaturesList from '../components/FeaturesList';
 import Card from '../components/Card';
 import Header from "../components/Header";
 import tiktok from '../assets/tiktok-brands.svg';
+import Copyright from '../components/CopyRight';
 
 const staticCardsData = [
     {
@@ -167,10 +168,7 @@ const Home:React.FunctionComponent = () => {
             <h3>Contact Us</h3>
           </div>
           <div className="mid">
-            Privacy Policy
-            <br />
-            Terms and Conditions
-            <br /> 2020 © Name
+            <Copyright></Copyright>
           </div>
           <div className="right"></div>
         </footer>
