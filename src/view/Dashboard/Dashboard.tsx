@@ -1,7 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import ScopedCssBaseline from "@material-ui/core/ScopedCssBaseline";
 import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
@@ -127,7 +126,6 @@ export default function Dashboard() {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     return (
-        <ScopedCssBaseline>
       <div className={classes.root}>
         <AppBar
           position="absolute"
@@ -153,7 +151,7 @@ export default function Dashboard() {
               noWrap
               className={classes.title}
             >
-              Dashboard
+              PROFILE
             </Typography>
             <Button
               style={{ color: "white", fontWeight: 400 }}
@@ -161,6 +159,13 @@ export default function Dashboard() {
               to="/"
             >
               BACK HOME
+            </Button>
+            <Button
+              style={{ color: "white", fontWeight: 400 }}
+              component={RouterLink}
+              to="/"
+            >
+              Logout
             </Button>
           </Toolbar>
         </AppBar>
@@ -202,6 +207,5 @@ export default function Dashboard() {
           </Container>
         </main>
       </div>
-    </ScopedCssBaseline>
     );
 }

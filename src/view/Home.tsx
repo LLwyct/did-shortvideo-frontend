@@ -1,10 +1,9 @@
 import * as React from 'react';
 import './Home.style.scss';
-import {Link} from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle';
 import FeaturesList from '../components/FeaturesList';
 import Card from '../components/Card';
-
+import Header from "../components/Header";
 import tiktok from '../assets/tiktok-brands.svg';
 
 const staticCardsData = [
@@ -83,19 +82,7 @@ const Home:React.FunctionComponent = () => {
     
     return (
       <>
-        <header className="App-header">
-          <div className="golbal__container">
-            <div className="App-header-in">
-              <div className="header-links">
-                <Link to="/">Home</Link>
-                <Link to="/profile">Profile</Link>
-              </div>
-              <div className="header-brand">
-                <span>DSV | TRUST CENTER</span>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Header/>
         <div className="side-nav firstrun">
           <div>
             <p>
