@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Copyright from "../../components/CopyRight";
 import Header from '../../components/Header';
+import AuthenticationService from "../../services/AuthenticationService";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,6 +37,10 @@ export default function Login() {
   const classes = useStyles();
   const formSubmitHandler: React.FormEventHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    AuthenticationService.login({
+      email: "123456789@qq.com",
+      password: "123456789"
+    });
   };
   return (
     <>
