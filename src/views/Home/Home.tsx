@@ -1,11 +1,11 @@
 import * as React from 'react';
 import './Home.style.scss';
-import SectionTitle from '../components/SectionTitle';
-import FeaturesList from '../components/FeaturesList';
-import Card from '../components/Card';
-import Header from "../components/Header";
+import SectionTitle from '../../components/SectionTitle';
+import FeaturesList from '../../components/FeaturesList';
+import Card from '../../components/Card';
+import Header from "../../components/Header";
 import tiktok from '../assets/tiktok-brands.svg';
-import Copyright from '../components/CopyRight';
+import Copyright from '../../components/CopyRight';
 
 const staticCardsData = [
     {

@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -153,20 +153,28 @@ export default function Dashboard() {
             >
               PROFILE
             </Typography>
-            <Button
-              style={{ color: "white", fontWeight: 400 }}
-              component={RouterLink}
-              to="/"
-            >
-              BACK HOME
-            </Button>
-            <Button
-              style={{ color: "white", fontWeight: 400 }}
-              component={RouterLink}
-              to="/"
-            >
-              Logout
-            </Button>
+            {
+              !open && (
+                <div>
+                  <Button
+                    style={{ color: "white", fontWeight: 600 }}
+                    component={RouterLink}
+                    size="large"
+                    to="/"
+                  >
+                    HOME
+                  </Button>
+                  <Button
+                    style={{ color: "white", fontWeight: 600 }}
+                    component={RouterLink}
+                    size="large"
+                    to="/"
+                  >
+                    Logout
+                  </Button>
+                </div>
+              )
+            }
           </Toolbar>
         </AppBar>
         <Drawer

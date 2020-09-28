@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.scss';
-import Dashboard from './view/Dashboard/Dashboard';
-import Login from "./view/FormSubmit/Login";
-import Signup from "./view/FormSubmit/Signup";
+import Dashboard from './views/Dashboard/Dashboard';
+import Login from "./views/FormSubmit/Login";
+import Signup from "./views/FormSubmit/Signup";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from './view/Home';
+import Home from './views/Home/Home';
 function App() {
 
   return (
