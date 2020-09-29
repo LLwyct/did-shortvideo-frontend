@@ -1,11 +1,17 @@
 import api from "./api";
 import { AxiosRequestConfig } from 'axios';
 
+interface ILoginFormData {
+    email: string;
+    password: string;
+}
+
+
 function register (data: any, options?: AxiosRequestConfig) {
     return api().post("/register", data, options);
 }
 
-function login (data: any, options?: AxiosRequestConfig) {
+function login (data: ILoginFormData, options?: AxiosRequestConfig) {
     return api().post("/login", data, options);
 }
 

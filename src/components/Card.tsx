@@ -15,8 +15,6 @@ interface Card {
 }
 
 const App = (props: Card) => {
-    console.log(props.img);
-    
     return (
       <Card className="simple-card">
         <CardMedia

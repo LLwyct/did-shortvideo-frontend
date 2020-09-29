@@ -1,4 +1,4 @@
-@import url('../default.style.scss');
+@import url('../../default.style.scss');
 
 .App-board {
     overflow: hidden;
@@ -60,17 +60,13 @@
     top: 120px;
     transition: all 0.5s ease;
     opacity: 0;
+    display: none;
     @media screen and (max-width: 789px){
-        display: none;
-    }
-    &.firstrun {
         display: none;
     }
     &.sidenav-show {
         animation: showSidenav 1s forwards;
-    }
-    &.sidenav-hidden {
-        animation: hideSidenav 1s forwards;
+        display: inline-block;
     }
     @keyframes showSidenav {
         0% {
@@ -78,14 +74,6 @@
         }
         100% {
             opacity: 1;
-        }
-    }
-    @keyframes hideSidenav {
-        0% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
         }
     }
     &:hover div p {
