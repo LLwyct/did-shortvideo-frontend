@@ -62,7 +62,7 @@
     opacity: 0;
     display: none;
     @media screen and (max-width: 789px){
-        display: none;
+        display: none !important;
     }
     &.sidenav-show {
         animation: showSidenav 1s forwards;

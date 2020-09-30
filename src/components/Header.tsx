@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import './Header.style.scss';
+import brand from "../assets/genesis-white-ellipse.png";
+
 
 interface IHeaderProps {
     colorMode?: "default" | "light"
@@ -11,6 +13,7 @@ const Header = (props: IHeaderProps) => {
     if (props.colorMode && props.colorMode === "light") {
         colorMode = "header-light";
     }
+    const brandSrc = colorMode === "" ? brand : "";
 
     return (
       <header className={`App-header ${colorMode}`}>
@@ -23,7 +26,8 @@ const Header = (props: IHeaderProps) => {
               <Link to="/register">singup</Link>
             </div>
             <div className="header-brand">
-              <span>DSV | TRUST CENTER</span>
+              <img src={brandSrc} alt="brand" className="homebrand" />
+              <span>| TRUST CENTER</span>
             </div>
           </div>
         </div>

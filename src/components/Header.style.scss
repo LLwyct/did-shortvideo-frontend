@@ -10,6 +10,12 @@ $header-color: white;
     padding: 15px 0;
 
     .header-brand {
+      display: flex;
+      align-items: center;
+      .homebrand {
+        height: 85px;
+        margin-right: 15px;
+      }
       span {
         color: $header-color;
         font-size: 2rem;
