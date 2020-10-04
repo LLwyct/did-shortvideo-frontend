@@ -10,15 +10,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Copyright from "../../components/CopyRight";
-import Header from '../../components/Header';
 import AuthenticationService from "../../services/AuthenticationService";
 
-export default function Login() {
+
+
+
+export default function Login(props: any) {
 
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
   
   const classes = useStyles();
+
   const formSubmitHandler: React.FormEventHandler = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -30,7 +33,7 @@ export default function Login() {
 
   return (
     <>
-      <Header colorMode="light"></Header>
+      <props.component colorMode={props.colorMode} />
       <Container component="main" maxWidth="xs">
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>

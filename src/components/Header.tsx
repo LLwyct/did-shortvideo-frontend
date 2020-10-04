@@ -4,19 +4,21 @@ import './Header.style.scss';
 import brand from "../assets/genesis-white-ellipse.png";
 
 
-interface IHeaderProps {
-    colorMode?: "default" | "light"
+export interface IHeaderProps {
+    colorMode?: "default" | "light" | "none"
 }
 
 const Header = (props: IHeaderProps) => {
     let colorMode = "";
     if (props.colorMode && props.colorMode === "light") {
         colorMode = "header-light";
+    } else if (props.colorMode && props.colorMode === "none") {
+        colorMode = "none";
     }
     const brandSrc = colorMode === "" ? brand : "";
-
+    
     return (
-      <header className={`App-header ${colorMode}`}>
+      <header className={`App-header ${colorMode}`} style={colorMode === "none" ? {display: "none"}: {}}>
         <div className="golbal__container">
           <div className="App-header-in">
             <div className="header-links">

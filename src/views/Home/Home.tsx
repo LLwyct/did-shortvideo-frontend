@@ -3,13 +3,12 @@ import './Home.style.scss';
 import SectionTitle from '../../components/SectionTitle';
 import FeaturesList from '../../components/FeaturesList';
 import Card from '../../components/Card';
-import Header from "../../components/Header";
 import tiktok from '../../assets/tiktok-brands.svg';
 import Copyright from '../../components/CopyRight';
 import { useHistory } from 'react-router-dom';
 
 
-const Home: React.FunctionComponent = () => {
+const Home = (props: any) => {
   const history = useHistory();
 
   const addSideNavController = () => {
@@ -40,10 +39,11 @@ const Home: React.FunctionComponent = () => {
   React.useEffect(() => {
     // 控制侧边导航的显示与否
     addSideNavController();
+
   }, []);
   return (
     <>
-      <Header />
+      <props.component colorMode={props.colorMode}/>
       <div className="side-nav">
         <div>
           <p>
