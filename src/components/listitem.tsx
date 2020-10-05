@@ -2,43 +2,48 @@ import React from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import PeopleIcon from "@material-ui/icons/People";
+import HistoryIcon from "@material-ui/icons/History";
+import UserIcon from "@material-ui/icons/AccountBox";
+import FavourateIcon from "@material-ui/icons/Favorite";
 import BarChartIcon from "@material-ui/icons/BarChart";
-import LayersIcon from "@material-ui/icons/Layers";
+import VideoIcon from "@material-ui/icons/VideoLibrary";
+import { Link, LinkProps } from "react-router-dom";
+
+const AdapterLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
+  (props, ref) => <Link innerRef={ref as any} {...props} />
+);
 
 export const mainListItems = (
   <div>
-    <ListItem button>
+    <ListItem component={AdapterLink} to="/profile">
       <ListItemIcon>
-        <DashboardIcon />
+        <UserIcon />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <ListItemText primary="个人中心" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={AdapterLink} to="/profile/history">
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <HistoryIcon />
       </ListItemIcon>
-      <ListItemText primary="Orders" />
+      <ListItemText primary="日志历史" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={AdapterLink} to="/profile/createcenter">
       <ListItemIcon>
-        <PeopleIcon />
+        <VideoIcon />
       </ListItemIcon>
-      <ListItemText primary="Customers" />
+      <ListItemText primary="创作中心" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={AdapterLink} to="/profile/dataanylize">
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="数据分析" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={AdapterLink} to="/profile/hobby">
       <ListItemIcon>
-        <LayersIcon />
+        <FavourateIcon />
       </ListItemIcon>
-      <ListItemText primary="Integrations" />
+      <ListItemText primary="我的兴趣" />
     </ListItem>
   </div>
 );

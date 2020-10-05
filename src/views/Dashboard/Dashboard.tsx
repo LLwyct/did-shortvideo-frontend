@@ -11,13 +11,13 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
-import {Link as RouterLink} from 'react-router-dom';
+import { Link as RouterLink, Switch, Route, useRouteMatch } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { mainListItems } from '../../components/listitem';
+import {mainListItems} from '../../components/listitem';
+import Copyright from '../../components/CopyRight';
+import Didinfo from '../Didinfo/Didinfo';
+
 
 const drawerWidth = 240;
 
@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Dashboard(props: any) {
-
+  let {path} = useRouteMatch();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
@@ -110,7 +110,6 @@ export default function Dashboard(props: any) {
   const handleDrawerClose = () => {
       setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
@@ -140,28 +139,26 @@ export default function Dashboard(props: any) {
           >
             PROFILE
           </Typography>
-          {
-            !open && (
-              <div>
-                <Button
-                  style={{ color: "white", fontWeight: 600 }}
-                  component={RouterLink}
-                  size="large"
-                  to="/"
-                >
-                  HOME
-                </Button>
-                <Button
-                  style={{ color: "white", fontWeight: 600 }}
-                  component={RouterLink}
-                  size="large"
-                  to="/"
-                >
-                  Logout
-                </Button>
-              </div>
-            )
-          }
+          {!open && (
+            <div>
+              <Button
+                style={{ color: "white", fontWeight: 600 }}
+                component={RouterLink}
+                size="large"
+                to="/"
+              >
+                HOME
+              </Button>
+              <Button
+                style={{ color: "white", fontWeight: 600 }}
+                component={RouterLink}
+                size="large"
+                to="/"
+              >
+                Logout
+              </Button>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -182,39 +179,20 @@ export default function Dashboard(props: any) {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}></Paper>
-            </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}></Paper>
-            </Grid>
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}></Paper>
-            </Grid>
-          </Grid>
-          <Box pt={4}>
-            <Copyright />
-          </Box>
+          <Switch>
+            <Route exact path={path}>
+              <Didinfo></Didinfo>
+            </Route>
+            <Route path={`${path}/history`}></Route>
+            <Route path={`${path}/createcenter`}></Route>
+            <Route path={`${path}/dataanylize`}></Route>
+            <Route path={`${path}/hobby`}></Route>
+          </Switch>
         </Container>
+        <Box pt={4}>
+          <Copyright />
+        </Box>
       </main>
     </div>
-  );
-}
-
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
   );
 }
