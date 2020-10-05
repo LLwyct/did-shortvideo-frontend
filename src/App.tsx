@@ -19,7 +19,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/">
-            
+            <Home component={Header}/>
           </Route>
           <Route path="/profile">
             <Dashboard />
