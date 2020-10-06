@@ -11,7 +11,12 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Copyright from "../../components/CopyRight";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from 'react-router-dom';
+
+/**
+ * Signup api
+ */
+import AuthenticationService from "../../services/AuthenticationService";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -66,11 +71,25 @@ export default function SignUp(props: any) {
 
 function Register(props: any) {
   const classes = useStyles();
+
+  const [phoneNumber, setPhoneNumber] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+  const [confirmPassword, setConfirmPassword] = React.useState<string>("");
   
-  const formSubmitHandler: React.FormEventHandler = (e: React.FormEvent) => {
+  const formSubmitHandler: React.FormEventHandler = async (e: React.FormEvent) => {
     e.preventDefault();
-    // pass
-    props.changeRegisterState(true);
+    try {
+      let {data} = await AuthenticationService.register({
+        phoneNumber,
+        password
+      });
+      if (data.status === true) {
+        props.changeRegisterState(true);
+      }
+    } catch (error) {
+      console.log(error);       
+    } finally {
+    }
   };
   
 
@@ -80,7 +99,7 @@ function Register(props: any) {
   async function getVerificationCode() {
     // pass
     if (isSendVCode === false) {
-      setSecond(5);
+      setSecond(60);
       setIsSendVCode(true);
     }
   }
@@ -92,7 +111,7 @@ function Register(props: any) {
         setSecond(v => {
           if (v === 1) {
             setIsSendVCode(false);
-            setSecond(5);
+            setSecond(60);
             clearInterval(timer);
           }
           return v - 1;
@@ -122,6 +141,8 @@ function Register(props: any) {
               id="phoneNumber"
               label="phone number"
               name="phoneNumber"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -133,6 +154,8 @@ function Register(props: any) {
               label="Password"
               type="password"
               id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Grid>
           <Grid item xs={12} spacing={1} container alignItems="center">
@@ -144,7 +167,8 @@ function Register(props: any) {
                 name="verificationCode"
                 label="verification code"
                 id="verificationCode"
-                autoComplete="current-password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </Grid>
             <Grid item xs={2} style={{ height: "100%" }}>
@@ -178,6 +202,7 @@ function Register(props: any) {
           color="primary"
           className={classes.submit}
           disableElevation
+          onClick={formSubmitHandler}
         >
           Sign Up
         </Button>
@@ -194,14 +219,37 @@ function Register(props: any) {
 }
 
 function InformCollect() {
-  const formSubmitHandler: React.FormEventHandler = (e: React.FormEvent) => {
+  const [name, setName] = React.useState("");
+  const [identityNumber, setIdentityNumber] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [age, setAge] = React.useState(18);
+
+  const history = useHistory();
+
+  const formSubmitHandler: React.FormEventHandler = async (
+    e: React.FormEvent
+  ) => {
     e.preventDefault();
+    try {
+      let { data } = await AuthenticationService.finishUserInformation({
+        name,
+        identityNumber,
+        email,
+        age,
+      });
+      console.log(data);
+      if (true) {
+        history.push("/profile");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   const classes = useStyles();
   return (
     <div className={classes.paper}>
       <Avatar className={classes.avatar} style={{ backgroundColor: "green" }}>
-        <AccountBox/>
+        <AccountBox />
       </Avatar>
       <Typography component="h1" variant="h5" align="center">
         Register Finished!
@@ -219,6 +267,8 @@ function InformCollect() {
               id="name"
               label="name"
               name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -226,9 +276,11 @@ function InformCollect() {
               variant="outlined"
               required
               fullWidth
-              name="identity number"
+              name="identityNumber"
               label="identity number"
-              id="id"
+              id="identityNumber"
+              value={identityNumber}
+              onChange={(e) => setIdentityNumber(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -236,9 +288,11 @@ function InformCollect() {
               variant="outlined"
               required
               fullWidth
-              name="phoneNumber"
-              label="phone number"
-              id="phoneNumber"
+              name="email"
+              label="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -250,6 +304,8 @@ function InformCollect() {
               label="age"
               type="number"
               id="age"
+              value={age}
+              onChange={(e) => setAge(Number(e.target.value))}
             />
           </Grid>
         </Grid>
@@ -265,5 +321,5 @@ function InformCollect() {
         </Button>
       </form>
     </div>
-  )
+  );
 }

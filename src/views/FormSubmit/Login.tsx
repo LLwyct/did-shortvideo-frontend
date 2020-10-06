@@ -10,6 +10,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Copyright from "../../components/CopyRight";
+
+/**
+ * Login api
+ */
 import AuthenticationService from "../../services/AuthenticationService";
 
 
@@ -17,18 +21,23 @@ import AuthenticationService from "../../services/AuthenticationService";
 
 export default function Login(props: any) {
 
-  const [email, setEmail] = React.useState<string>("");
+  const [phoneNumber, setPhoneNumber] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
   
   const classes = useStyles();
 
-  const formSubmitHandler: React.FormEventHandler = (e: React.FormEvent) => {
+  const formSubmitHandler: React.FormEventHandler = async (
+    e: React.FormEvent
+  ) => {
     e.preventDefault();
-    
-    AuthenticationService.login({
-      email,
-      password
-    });
+    try {
+      const res = await AuthenticationService.login({
+        phoneNumber,
+        password,
+      });
+    } catch (error) {
+      
+    }
   };
 
   return (
@@ -58,8 +67,8 @@ export default function Login(props: any) {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -73,7 +82,7 @@ export default function Login(props: any) {
                   id="password"
                   autoComplete="off"
                   value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
             </Grid>

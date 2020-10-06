@@ -16,9 +16,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {mainListItems} from '../../components/listitem';
 import Copyright from '../../components/CopyRight';
-import Didinfo from '../Didinfo/Didinfo';
-
-
+import Didinfo from './Didinfo/Didinfo';
+import LoginHistory from './LoginHistory/LoginHistory';
+import VideoInfo from './VideoInfo/VideoInfo';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -183,10 +183,11 @@ export default function Dashboard(props: any) {
             <Route exact path={path}>
               <Didinfo></Didinfo>
             </Route>
-            <Route path={`${path}/history`}></Route>
-            <Route path={`${path}/createcenter`}></Route>
+            <Route path={`${path}/history`} component={LoginHistory}></Route>
+            <Route path={`${path}/createcenter`} component={VideoInfo}></Route>
             <Route path={`${path}/dataanylize`}></Route>
             <Route path={`${path}/hobby`}></Route>
+            <Route path={`${path}/*`} component={Didinfo} />
           </Switch>
         </Container>
         <Box pt={4}>
