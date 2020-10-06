@@ -1,199 +1,228 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import { Link as RouterLink, Switch, Route, useRouteMatch } from 'react-router-dom';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import {mainListItems} from '../../components/listitem';
-import Copyright from '../../components/CopyRight';
-import Didinfo from './Didinfo/Didinfo';
-import LoginHistory from './LoginHistory/LoginHistory';
-import VideoInfo from './VideoInfo/VideoInfo';
+import * as React from "react";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import Box from "@material-ui/core/Box";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import List from "@material-ui/core/List";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
+import {
+  Link as RouterLink,
+  Switch,
+  Route,
+  useRouteMatch,
+  Redirect
+} from "react-router-dom";
+import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import { mainListItems } from "../../components/listitem";
+import Copyright from "../../components/CopyRight";
+import Didinfo from "./Didinfo/Didinfo";
+import LoginHistory from "./LoginHistory/LoginHistory";
+import VideoInfo from "./VideoInfo/VideoInfo";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
+  root: {
+    display: "flex",
+  },
+  toolbar: {
+    paddingRight: 36, // keep right padding when drawer closed
+  },
+  toolbarIcon: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    padding: "0 8px",
+    ...theme.mixins.toolbar,
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  menuButtonHidden: {
+    display: "none",
+  },
+  title: {
+    flexGrow: 1,
+  },
+  drawerPaper: {
+    position: "relative",
+    whiteSpace: "nowrap",
+    width: drawerWidth,
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawerPaperClose: {
+    overflowX: "hidden",
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7),
+    [theme.breakpoints.up("sm")]: {
+      width: theme.spacing(9),
     },
-    toolbar: {
-        paddingRight: 36, // keep right padding when drawer closed
-    },
-    toolbarIcon: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: '0 8px',
-        ...theme.mixins.toolbar,
-    },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-    },
-    appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    menuButton: {
-        marginRight: 36,
-    },
-    menuButtonHidden: {
-        display: 'none',
-    },
-    title: {
-        flexGrow: 1,
-    },
-    drawerPaper: {
-        position: 'relative',
-        whiteSpace: 'nowrap',
-        width: drawerWidth,
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    drawerPaperClose: {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up('sm')]: {
-            width: theme.spacing(9),
-        },
-    },
-    appBarSpacer: theme.mixins.toolbar,
-    content: {
-        flexGrow: 1,
-        height: '100vh',
-        overflow: 'auto',
-    },
-    container: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
-    },
-    paper: {
-        padding: theme.spacing(2),
-        display: 'flex',
-        overflow: 'auto',
-        flexDirection: 'column',
-    },
-    fixedHeight: {
-        height: 240,
-    },
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: "100vh",
+    overflow: "auto",
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: "flex",
+    overflow: "auto",
+    flexDirection: "column",
+  },
+  fixedHeight: {
+    height: 240,
+  },
 }));
 
 export default function Dashboard(props: any) {
-  let {path} = useRouteMatch();
+  let { path } = useRouteMatch();
   const classes = useStyles();
+  let [isLogin, setIslogin] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
-      setOpen(true);
+    setOpen(true);
   };
   const handleDrawerClose = () => {
-      setOpen(false);
+    setOpen(false);
   };
+  React.useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setIslogin(true);
+      console.log(isLogin);
+    }
+  }, [isLogin]);
 
+  // 这样是不行的，因为，在第一次渲染组件的时候isLogin是false，当改为true了以后，触发了第二次渲染，但是在第二次渲染之前，就被重定向走了，没有触发二次渲染。
+  if (!isLogin) {
   return (
-    <div className={classes.root}>
-      <AppBar
-        position="absolute"
-        className={clsx(classes.appBar, open && classes.appBarShift)}
-      >
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(
-              classes.menuButton,
-              open && classes.menuButtonHidden
+      <div className={classes.root}>
+        <AppBar
+          position="absolute"
+          className={clsx(classes.appBar, open && classes.appBarShift)}
+        >
+          <Toolbar className={classes.toolbar}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              className={clsx(
+                classes.menuButton,
+                open && classes.menuButtonHidden
+              )}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              component="h1"
+              variant="h6"
+              color="inherit"
+              noWrap
+              className={classes.title}
+            >
+              PROFILE
+            </Typography>
+            {!open && (
+              <div>
+                <Button
+                  style={{ color: "white", fontWeight: 600 }}
+                  component={RouterLink}
+                  size="large"
+                  to="/"
+                >
+                  HOME
+                </Button>
+                <Button
+                  style={{ color: "white", fontWeight: 600 }}
+                  component={RouterLink}
+                  size="large"
+                  to="/"
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    setIslogin(false);
+                  }}
+                >
+                  Logout
+                </Button>
+              </div>
             )}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            PROFILE
-          </Typography>
-          {!open && (
-            <div>
-              <Button
-                style={{ color: "white", fontWeight: 600 }}
-                component={RouterLink}
-                size="large"
-                to="/"
-              >
-                HOME
-              </Button>
-              <Button
-                style={{ color: "white", fontWeight: 600 }}
-                component={RouterLink}
-                size="large"
-                to="/"
-              >
-                Logout
-              </Button>
-            </div>
-          )}
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>{mainListItems}</List>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Switch>
-            <Route exact path={path}>
-              <Didinfo></Didinfo>
-            </Route>
-            <Route path={`${path}/history`} component={LoginHistory}></Route>
-            <Route path={`${path}/createcenter`} component={VideoInfo}></Route>
-            <Route path={`${path}/dataanylize`}></Route>
-            <Route path={`${path}/hobby`}></Route>
-            <Route path={`${path}/*`} component={Didinfo} />
-          </Switch>
-        </Container>
-        <Box pt={4}>
-          <Copyright />
-        </Box>
-      </main>
-    </div>
-  );
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+          }}
+          open={open}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerClose}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
+          <Divider />
+          <List>{mainListItems}</List>
+        </Drawer>
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <Container maxWidth="lg" className={classes.container}>
+            <Switch>
+              <Route exact path={path}>
+                <Didinfo></Didinfo>
+              </Route>
+              <Route path={`${path}/history`} component={LoginHistory}></Route>
+              <Route
+                path={`${path}/createcenter`}
+                component={VideoInfo}
+              ></Route>
+              <Route path={`${path}/dataanylize`}></Route>
+              <Route path={`${path}/hobby`}></Route>
+              <Route path={`${path}/*`} component={Didinfo} />
+            </Switch>
+          </Container>
+          <Box pt={4}>
+            <Copyright />
+          </Box>
+        </main>
+      </div>
+    );
+  } else {
+    return <Redirect
+      to={{
+        pathname: "/login",
+      }}
+    />
+  }
 }

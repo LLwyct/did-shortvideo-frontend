@@ -22,7 +22,7 @@ function App() {
             <Home component={Header}/>
           </Route>
           <Route path="/profile">
-            <Dashboard />
+              <Dashboard />
           </Route>
           <Route path="/login">
             <Login component={Header} colorMode="light"/>

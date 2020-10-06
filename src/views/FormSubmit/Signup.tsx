@@ -83,12 +83,12 @@ function Register(props: any) {
         phoneNumber,
         password
       });
-      if (data.status === true) {
+      if (data.msg === "success") {
         props.changeRegisterState(true);
+        localStorage.setItem("token", data.token);
       }
     } catch (error) {
-      console.log(error);       
-    } finally {
+      window.alert("网络连接失败，请稍后再试...");
     }
   };
   
@@ -237,12 +237,12 @@ function InformCollect() {
         email,
         age,
       });
-      console.log(data);
-      if (true) {
+      if (data.msg === "success") {
         history.push("/profile");
       }
     } catch (error) {
       console.log(error);
+      window.alert("网络连接失败，请稍后再试...");
     }
   };
   const classes = useStyles();
