@@ -3,8 +3,7 @@ import {Link} from 'react-router-dom';
 import './Header.style.scss';
 import brand from "../assets/genesis-white-ellipse.png";
 
-
-export interface IHeaderProps {
+export interface IHeaderProps{
     colorMode?: "default" | "light" | "none"
 }
 
@@ -20,7 +19,6 @@ const Header = (props: IHeaderProps) => {
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
       setIslogin(true);
-      console.log(isLogin);
     }
   }, [isLogin])
   let LinkGroup;

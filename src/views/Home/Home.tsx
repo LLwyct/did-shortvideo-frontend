@@ -6,9 +6,11 @@ import Card from '../../components/Card';
 import tiktok from '../../assets/tiktok-brands.svg';
 import Copyright from '../../components/CopyRight';
 import { useHistory } from 'react-router-dom';
-
-
-const Home = (props: any) => {
+interface IProps {
+  component: any;
+  colorMode?: string
+}
+const Home = (props: IProps) => {
   const history = useHistory();
 
   const addSideNavController = () => {

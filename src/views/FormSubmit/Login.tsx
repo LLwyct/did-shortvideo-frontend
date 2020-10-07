@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Copyright from "../../components/CopyRight";
+import { useHistory } from 'react-router-dom';
 
 /**
  * Login api
@@ -20,7 +21,7 @@ import AuthenticationService from "../../services/AuthenticationService";
 
 
 export default function Login(props: any) {
-
+  const history = useHistory();
   const [phoneNumber, setPhoneNumber] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
   
@@ -40,6 +41,8 @@ export default function Login(props: any) {
       }
     } catch (error) {
       window.alert("网络连接失败，请稍后再试...");
+      history.push("/profile");
+      window.location.reload();
     }
   };
 

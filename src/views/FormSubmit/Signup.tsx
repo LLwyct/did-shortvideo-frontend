@@ -53,7 +53,7 @@ export default function SignUp(props: any) {
   const [isFinishRegister, setIsFinishRegister] = React.useState(checkState(op) ? true : false);
 
   return (
-      <>
+    <>
       <props.component colorMode={props.colorMode} />
       <Container component="main" maxWidth="xs">
         {

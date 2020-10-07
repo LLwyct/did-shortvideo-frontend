@@ -25,6 +25,7 @@ import Copyright from "../../components/CopyRight";
 import Didinfo from "./Didinfo/Didinfo";
 import LoginHistory from "./LoginHistory/LoginHistory";
 import VideoInfo from "./VideoInfo/VideoInfo";
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -109,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard(props: any) {
   let { path } = useRouteMatch();
   const classes = useStyles();
-  let [isLogin, setIslogin] = React.useState(false);
+  let [isLogin, setIslogin] = React.useState(localStorage.getItem("token") ? false : true);
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -117,14 +118,8 @@ export default function Dashboard(props: any) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  React.useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setIslogin(true);
-      console.log(isLogin);
-    }
-  }, [isLogin]);
 
-  // 这样是不行的，因为，在第一次渲染组件的时候isLogin是false，当改为true了以后，触发了第二次渲染，但是在第二次渲染之前，就被重定向走了，没有触发二次渲染。
+
   if (!isLogin) {
   return (
       <div className={classes.root}>

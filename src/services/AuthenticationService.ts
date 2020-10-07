@@ -20,15 +20,15 @@ interface IInformCollectData {
 }
 
 function register(data: ISignupFormData, options?: AxiosRequestConfig) {
-    return api().post("/register", data, options);
+    return api().post("auth/signup", data, options);
 }
 
 function login (data: ILoginFormData, options?: AxiosRequestConfig) {
-    return api().post("/login", data, options);
+    return api().post("auth/signin", data, options);
 }
 
 function finishUserInformation(data: IInformCollectData, options?: AxiosRequestConfig) {
-    return api().post("/finishuserinformation", data, options);
+    return api().post("finishuserinformation", data, options);
 }
 
 export default {
