@@ -5,7 +5,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import HistoryIcon from "@material-ui/icons/History";
 import UserIcon from "@material-ui/icons/AccountBox";
 import FavourateIcon from "@material-ui/icons/Favorite";
-import BarChartIcon from "@material-ui/icons/BarChart";
+// import BarChartIcon from "@material-ui/icons/BarChart";
 import VideoIcon from "@material-ui/icons/VideoLibrary";
 import { Link, LinkProps } from "react-router-dom";
 
@@ -33,12 +33,12 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="创作中心" />
     </ListItem>
-    <ListItem button component={AdapterLink} to="/profile/dataanylize">
+    {/* <ListItem button component={AdapterLink} to="/profile/dataanylize">
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="数据分析" />
-    </ListItem>
+    </ListItem> */}
     <ListItem button component={AdapterLink} to="/profile/hobby">
       <ListItemIcon>
         <FavourateIcon />

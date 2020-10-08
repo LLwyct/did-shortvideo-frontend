@@ -16,7 +16,7 @@ interface Card {
 
 const App = (props: Card) => {
     return (
-      <Card className="simple-card">
+      <Card className="simple-card" elevation={3}>
         <CardMedia
             component="img"
             image={props.img}

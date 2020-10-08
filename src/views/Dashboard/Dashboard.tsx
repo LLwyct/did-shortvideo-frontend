@@ -1,5 +1,11 @@
+/**
+ * import react about
+ */
 import * as React from "react";
 import clsx from "clsx";
+/**
+ * import style about
+ */
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
@@ -20,11 +26,15 @@ import {
 } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+/**
+ * import custom component
+ */
 import { mainListItems } from "../../components/listitem";
 import Copyright from "../../components/CopyRight";
 import Didinfo from "./Didinfo/Didinfo";
 import LoginHistory from "./LoginHistory/LoginHistory";
 import VideoInfo from "./VideoInfo/VideoInfo";
+import Hobby from './Hobby/Hobby';
 
 const drawerWidth = 240;
 
@@ -110,7 +120,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard(props: any) {
   let { path } = useRouteMatch();
   const classes = useStyles();
-  let [isLogin, setIslogin] = React.useState(localStorage.getItem("token") ? false : true);
+  // let [isLogin, setIslogin] = React.useState(localStorage.getItem("token") ? false : true);
+  let [isLogin, setIslogin] = React.useState(true);
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -120,7 +131,7 @@ export default function Dashboard(props: any) {
   };
 
 
-  if (!isLogin) {
+  if (isLogin) {
   return (
       <div className={classes.root}>
         <AppBar
@@ -202,8 +213,8 @@ export default function Dashboard(props: any) {
                 path={`${path}/createcenter`}
                 component={VideoInfo}
               ></Route>
-              <Route path={`${path}/dataanylize`}></Route>
-              <Route path={`${path}/hobby`}></Route>
+              {/* <Route path={`${path}/dataanylize`}></Route> */}
+              <Route path={`${path}/hobby`} component={Hobby}></Route>
               <Route path={`${path}/*`} component={Didinfo} />
             </Switch>
           </Container>

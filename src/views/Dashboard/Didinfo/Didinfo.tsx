@@ -66,18 +66,16 @@ function Didinfo() {
   function generateList(fakeHisioryList: Array<IHistory>) {
     return fakeHisioryList.map((item: IHistory, index: number) => {
       return (
-        <>
-        <ListItem>
-          <Grid container alignItems="center" justify="space-between">
-            <Typography variant="body1">{item.name}</Typography>
-            <Typography variant="subtitle1" color="textSecondary">
-              {item.date}
-            </Typography>
-          </Grid>
+        <ListItem key={index}>
+            <Grid container alignItems="center" justify="space-between">
+              <Typography variant="body1">{item.name}</Typography>
+              <Typography variant="subtitle1" color="textSecondary">
+                {item.date}
+              </Typography>
+            </Grid>
+          <Divider />
         </ListItem>
-        <Divider />
-        </>
-      )
+      );
     })
   }
   return (

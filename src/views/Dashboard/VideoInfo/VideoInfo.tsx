@@ -8,31 +8,36 @@ import Typography from '@material-ui/core/Typography';
 /**
  *  图片导入
  */
-import onepunch1 from '../../../assets/one punch.jpg';
+import onepunch42 from '../../../assets/one punch42.jpg';
+import onepunch41 from '../../../assets/one punch41.jpg';
+import onepunch40 from '../../../assets/one punch40.jpg';
 
 const fakeVideoList = [
   {
-    title: "《一拳超人》第三季 42.埼玉最新绝招遭吐槽！！龙卷独特“马杀鸡”手法捏爆怪人赛大蛇！",
+    title:
+      "《一拳超人》第三季 42.埼玉最新绝招遭吐槽！！龙卷独特“马杀鸡”手法捏爆怪人赛大蛇！",
     plantform: "BiliBili",
-    imgsrc: onepunch1,
+    imgsrc: onepunch42,
     publicDate: "2020年09月18日 10:23",
     blockchainInfo: "78EDA3B7F87B1B46",
   },
   {
-    title: "《一拳超人》第三季 41.神级怪人竟传授埼玉新技能！赛克斯身体被龙卷无情入侵！",
+    title:
+      "《一拳超人》第三季 41.神级怪人竟传授埼玉新技能！赛克斯身体被龙卷无情入侵！",
     plantform: "BiliBili",
-    imgsrc: onepunch1,
+    imgsrc: onepunch41,
     publicDate: "2020年08月05日 18:59",
     blockchainInfo: "BC4B2A76B9719D91",
   },
   {
-    title: "《一拳超人》第三季 40.神明终于显露真身！！觉醒的赛大蛇力量赶超波罗斯，龙卷恐遇史诗级危机！",
+    title:
+      "《一拳超人》第三季 40.神明终于显露真身！！觉醒的赛大蛇力量赶超波罗斯，龙卷恐遇史诗级危机！",
     plantform: "BiliBili",
-    imgsrc: onepunch1,
+    imgsrc: onepunch40,
     publicDate: "2020年07月10日 11:14",
     blockchainInfo: "A0760186574B0282",
   },
-]
+];
 
 const generateVideoList = (fakeVideoList: any) => {
   return fakeVideoList.map((item: any, index: number) => {

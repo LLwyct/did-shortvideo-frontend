@@ -64,12 +64,12 @@ const fakeHisioryList: Array<IHistory> = [
 ]
 
 export default function LoginHistory () {
-    const [historyList, setHistoryList] = React.useState<Array<IHistory>>([]);
+    // const [historyList, setHistoryList] = React.useState<Array<IHistory>>([]);
 
     function generateList() {
         return fakeHisioryList.map((item: IHistory, index: number) => {
                 return (
-                    <Grid xs={12} style={{ padding: "5px 0", margin: "5px 0" }} key={index}>
+                    <Grid item xs={12} style={{ padding: "5px 0", margin: "5px 0" }} key={index}>
                         <ListItemText primary={item.name} secondary={`登陆日期: ${item.date}`}></ListItemText>
                         <ListItemText secondary={`登录地点: ${item.loginAddress}`}></ListItemText>
                         <ListItemText secondary={`登录IP地址: ${item.ipAddress}`}></ListItemText>
@@ -81,7 +81,7 @@ export default function LoginHistory () {
     return (
         <Grid container>
             <Typography variant="h4">Login History</Typography>
-            <Grid xs={12}>
+            <Grid item xs={12}>
                 <List>
                     {
                         generateList()

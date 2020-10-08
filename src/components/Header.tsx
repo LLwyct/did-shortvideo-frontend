@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 import './Header.style.scss';
 import brand from "../assets/genesis-white-ellipse.png";
+import brandBlack from "../assets/genesis-black-ellipse.png";
 
 export interface IHeaderProps{
     colorMode?: "default" | "light" | "none"
@@ -14,7 +15,7 @@ const Header = (props: IHeaderProps) => {
   } else if (props.colorMode && props.colorMode === "none") {
       colorMode = "none";
   }
-  const brandSrc = colorMode === "" ? brand : "";
+  const brandSrc = colorMode === "" ? brand : brandBlack;
   const [isLogin, setIslogin] = React.useState(false);
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -25,11 +26,21 @@ const Header = (props: IHeaderProps) => {
   if (isLogin) {
     LinkGroup = (
       <>
-      <Link to="/">Home</Link>
-      <Link to="/profile">Profile</Link>
-      <Link to="/" onClick={() => {localStorage.removeItem("token");setIslogin(false);}}>Logout</Link>
+        <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/register">singup</Link>
+        <Link to="/profile">Profile</Link>
+        <Link
+          to="/"
+          onClick={() => {
+            localStorage.removeItem("token");
+            setIslogin(false);
+          }}
+        >
+          Logout
+        </Link>
       </>
-    )
+    );
   } else {
     LinkGroup = (
       <>
@@ -37,8 +48,17 @@ const Header = (props: IHeaderProps) => {
         <Link to="/login">Login</Link>
         <Link to="/register">singup</Link>
         <Link to="/profile">Profile</Link>
+        <Link
+          to="/"
+          onClick={() => {
+            localStorage.removeItem("token");
+            setIslogin(false);
+          }}
+        >
+          Logout
+        </Link>
       </>
-    )
+    );
   }
     
   return (

@@ -32,17 +32,17 @@ export default function Login(props: any) {
   ) => {
     e.preventDefault();
     try {
-      const {data} = await AuthenticationService.login({
-        phoneNumber,
-        password,
-      });
-      if (data.msg === "success") {
-        localStorage.setItem("token", data.token);
-      }
-    } catch (error) {
-      window.alert("网络连接失败，请稍后再试...");
+      // const {data} = await AuthenticationService.login({
+      //   phoneNumber,
+      //   password,
+      // });
+      // if (data.msg === "success") {
+        // localStorage.setItem("token", data.token);
+      // }
       history.push("/profile");
       window.location.reload();
+    } catch (error) {
+      window.alert("网络连接失败，请稍后再试...");
     }
   };
 

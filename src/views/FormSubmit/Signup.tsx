@@ -79,14 +79,14 @@ function Register(props: any) {
   const formSubmitHandler: React.FormEventHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      let {data} = await AuthenticationService.register({
-        phoneNumber,
-        password
-      });
-      if (data.msg === "success") {
+      // let {data} = await AuthenticationService.register({
+      //   phoneNumber,
+      //   password
+      // });
+      // if (data.msg === "success") {
         props.changeRegisterState(true);
-        localStorage.setItem("token", data.token);
-      }
+      //   localStorage.setItem("token", data.token);
+      // }
     } catch (error) {
       window.alert("网络连接失败，请稍后再试...");
     }
@@ -231,15 +231,15 @@ function InformCollect() {
   ) => {
     e.preventDefault();
     try {
-      let { data } = await AuthenticationService.finishUserInformation({
-        name,
-        identityNumber,
-        email,
-        age,
-      });
-      if (data.msg === "success") {
+      // let { data } = await AuthenticationService.finishUserInformation({
+      //   name,
+      //   identityNumber,
+      //   email,
+      //   age,
+      // });
+      // if (data.msg === "success") {
         history.push("/profile");
-      }
+      // }
     } catch (error) {
       console.log(error);
       window.alert("网络连接失败，请稍后再试...");
