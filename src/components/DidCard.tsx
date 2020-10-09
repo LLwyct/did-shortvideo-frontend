@@ -37,6 +37,12 @@ function DidCard () {
           <Typography variant="body2" color="textSecondary">
             青少年模式: {"启动"}
           </Typography>
+          <Typography variant="body2" color="textSecondary">
+            信用评级: {"A"}
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            信用分数: {"97"}
+          </Typography>
         </CardContent>
       </Card>
     );
